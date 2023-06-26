@@ -1,1 +1,1 @@
-# SQL_practise_repo
+# SQL_practice_repo
