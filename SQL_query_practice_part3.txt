@@ -1,0 +1,249 @@
+SQL> SELECT A.Name, S.Title FROM ARTIST A JOIN RECORDED_BY R ON R.ArtistID = A.ArtistID JOIN SONG S ON R.SongID = S.SongID AND R.SongID = 222;
+
+no rows selected
+
+SQL> SELECT * FROM SONG S;
+
+    SONGID TITLE                                              GENRE                                                                                                                                                                                                                                         
+---------- -------------------------------------------------- --------------------                                                                                                                                                                                                                          
+       201 Purple Rain                                        Rock                                                                                                                                                                                                                                          
+       202 Numb                                               Rock                                                                                                                                                                                                                                          
+       203 Linger                                             Pop                                                                                                                                                                                                                                           
+       204 Smells Like Teen Spirit                            Grunge                                                                                                                                                                                                                                        
+       205 California Love                                    Hip Hop                                                                                                                                                                                                                                       
+       206 Red House                                          Blues                                                                                                                                                                                                                                         
+       207 What I Got                                         Reggae Rock                                                                                                                                                                                                                                   
+       208 New York, New York                                 Vocal Jazz                                                                                                                                                                                                                                    
+       209 Light My Fire                                      Rock                                                                                                                                                                                                                                          
+       210 Change                                             Rock                                                                                                                                                                                                                                          
+       211 Ring of Fire                                       Country                                                                                                                                                                                                                                       
+
+    SONGID TITLE                                              GENRE                                                                                                                                                                                                                                         
+---------- -------------------------------------------------- --------------------                                                                                                                                                                                                                          
+       212 When You're Gone                                   Pop                                                                                                                                                                                                                                           
+       213 Controversy                                        Pop                                                                                                                                                                                                                                           
+       214 Big Poppa                                          Gangsta Rap                                                                                                                                                                                                                                   
+       215 Levels                                             House                                                                                                                                                                                                                                         
+       216 You Know I'm No Good                               Blues                                                                                                                                                                                                                                         
+       217 Piece of MY Heart                                  Blues                                                                                                                                                                                                                                         
+       218 Do I Wanna Know?                                   Rock                                                                                                                                                                                                                                          
+       219 Diablo                                             Hip Hop                                                                                                                                                                                                                                       
+       220 My Way                                             Vocal Jazz                                                                                                                                                                                                                                    
+       221 Wake Me Up                                         Folktronica                                                                                                                                                                                                                                   
+       222 Best of You                                        Rock                                                                                                                                                                                                                                          
+
+22 rows selected.
+
+SQL> 
+SQL> 
+SQL> SELECT * FROM RECORDED_BY R;
+
+    SONGID   ARTISTID       YEAR                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+       201        103       1984                                                                                                                                                                                                                                                                            
+       202        104       2003                                                                                                                                                                                                                                                                            
+       203        105       1993                                                                                                                                                                                                                                                                            
+       204        106       1991                                                                                                                                                                                                                                                                            
+       205        107       1995                                                                                                                                                                                                                                                                            
+       206        111       1967                                                                                                                                                                                                                                                                            
+       207        117       1996                                                                                                                                                                                                                                                                            
+       208        118       1955                                                                                                                                                                                                                                                                            
+       209        110       1967                                                                                                                                                                                                                                                                            
+       210        116       1992                                                                                                                                                                                                                                                                            
+       211        113       1963                                                                                                                                                                                                                                                                            
+
+    SONGID   ARTISTID       YEAR                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+       212        105       1996                                                                                                                                                                                                                                                                            
+       213        103       1981                                                                                                                                                                                                                                                                            
+       214        119       1994                                                                                                                                                                                                                                                                            
+       215        120       2011                                                                                                                                                                                                                                                                            
+       216        108       2007                                                                                                                                                                                                                                                                            
+       217        109       1968                                                                                                                                                                                                                                                                            
+       217        121       1967                                                                                                                                                                                                                                                                            
+       218        115       2013                                                                                                                                                                                                                                                                            
+       219        102       2014                                                                                                                                                                                                                                                                            
+       220        118       1969                                                                                                                                                                                                                                                                            
+
+21 rows selected.
+
+SQL> 
+SQL> 
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('220','118','1969');
+INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('220','118','1969')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MSAKIB2022.SYS_C00118169) violated 
+
+
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('220','101','1977');
+
+1 row created.
+
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('221','120','2013');
+
+1 row created.
+
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('222','114','2005');
+
+1 row created.
+
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('222','103','2007');SELECT * FROM RECORDED_BY R;
+INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('222','103','2007');SELECT * FROM RECORDED_BY R
+                                                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM RECORDED_BY R;
+
+    SONGID   ARTISTID       YEAR                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+       201        103       1984                                                                                                                                                                                                                                                                            
+       202        104       2003                                                                                                                                                                                                                                                                            
+       203        105       1993                                                                                                                                                                                                                                                                            
+       204        106       1991                                                                                                                                                                                                                                                                            
+       205        107       1995                                                                                                                                                                                                                                                                            
+       206        111       1967                                                                                                                                                                                                                                                                            
+       207        117       1996                                                                                                                                                                                                                                                                            
+       208        118       1955                                                                                                                                                                                                                                                                            
+       209        110       1967                                                                                                                                                                                                                                                                            
+       210        116       1992                                                                                                                                                                                                                                                                            
+       211        113       1963                                                                                                                                                                                                                                                                            
+
+    SONGID   ARTISTID       YEAR                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+       212        105       1996                                                                                                                                                                                                                                                                            
+       213        103       1981                                                                                                                                                                                                                                                                            
+       214        119       1994                                                                                                                                                                                                                                                                            
+       215        120       2011                                                                                                                                                                                                                                                                            
+       216        108       2007                                                                                                                                                                                                                                                                            
+       217        109       1968                                                                                                                                                                                                                                                                            
+       217        121       1967                                                                                                                                                                                                                                                                            
+       218        115       2013                                                                                                                                                                                                                                                                            
+       219        102       2014                                                                                                                                                                                                                                                                            
+       220        101       1977                                                                                                                                                                                                                                                                            
+       220        118       1969                                                                                                                                                                                                                                                                            
+
+    SONGID   ARTISTID       YEAR                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+       221        120       2013                                                                                                                                                                                                                                                                            
+       222        114       2005                                                                                                                                                                                                                                                                            
+
+24 rows selected.
+
+SQL> SELECT *FROM ARTIST A;
+
+  ARTISTID NAME                 FNAME                  LNAME                   LEADYOD    LEADAOD                                                                                                                                                                                                           
+---------- -------------------- ---------------------- -------------------- ---------- ----------                                                                                                                                                                                                           
+       101 Elvis                Elvis                  Presley                    1977         41                                                                                                                                                                                                           
+       102 Mac Miller           Mac                    Miller                     2018         26                                                                                                                                                                                                           
+       103 Prince               Prince Rogers          Nelson                     2016         57                                                                                                                                                                                                           
+       104 Linkin Park          Chester                Bennington                 2017         41                                                                                                                                                                                                           
+       105 Cranberries          Dolores                O'Riordan                  2018         46                                                                                                                                                                                                           
+       106 Nirvana              Kurt                   Cobain                     1994         27                                                                                                                                                                                                           
+       107 2Pac                 Tupac                  Shakur                     1996         25                                                                                                                                                                                                           
+       108 Amy Winehouse        Amy                    Winehouse                  2011         27                                                                                                                                                                                                           
+       109 Janis Joplin         Janis                  Joplin                     1970         27                                                                                                                                                                                                           
+       110 The Doors            Jim                    Morrison                   1971         27                                                                                                                                                                                                           
+       111 Jimi Hendrix         Jimi                   Hendrix                    1970         27                                                                                                                                                                                                           
+
+  ARTISTID NAME                 FNAME                  LNAME                   LEADYOD    LEADAOD                                                                                                                                                                                                           
+---------- -------------------- ---------------------- -------------------- ---------- ----------                                                                                                                                                                                                           
+       112 Queen                Freddy                 Mercury                    1991         45                                                                                                                                                                                                           
+       113 Johnny Cash          Johnny                 Cash                       2003         71                                                                                                                                                                                                           
+       114 Foo Fighters         Dave                   Grohl                                                                                                                                                                                                                                                
+       115 Arctic Monkeys       Alex                   Turner                                                                                                                                                                                                                                               
+       116 Blind Melon          Richard Shannon        Hoon                       1995         28                                                                                                                                                                                                           
+       117 Sublime              Bradley                Nowell                     1996         28                                                                                                                                                                                                           
+       118 Frank Sinatra        Frank                  Sinatra                    1998         82                                                                                                                                                                                                           
+       119 Notorious B.I.G.     Christopher George     Latore Wallace             1997         24                                                                                                                                                                                                           
+       120 Aviccii              Tim                    Bergling                   2018         28                                                                                                                                                                                                           
+       121 Erma Franklin        Erma                   Franklin                   2001         64                                                                                                                                                                                                           
+
+21 rows selected.
+
+SQL> #DB LOOKS FINE NOW, LETS TRY AGIN
+SP2-0734: unknown command beginning "DB LOOKS F..." - rest of line ignored.
+SQL> SELECT A.Name, S.Title FROM ARTIST A JOIN RECORDED_BY R ON R.ArtistID = A.ArtistID JOIN SONG S ON R.SongID = S.SongID AND R.SongID = 222;
+
+NAME                 TITLE                                                                                                                                                                                                                                                                                  
+-------------------- --------------------------------------------------                                                                                                                                                                                                                                     
+Foo Fighters         Best of You                                                                                                                                                                                                                                                                            
+
+SQL> INSERT INTO Recorded_by(songID,ArtistID,Year) VALUES ('222','103','2007');
+
+1 row created.
+
+SQL> SELECT A.Name, S.Title FROM ARTIST A JOIN RECORDED_BY R ON R.ArtistID = A.ArtistID JOIN SONG S ON R.SongID = S.SongID AND R.SongID = 222;
+
+NAME                 TITLE                                                                                                                                                                                                                                                                                  
+-------------------- --------------------------------------------------                                                                                                                                                                                                                                     
+Prince               Best of You                                                                                                                                                                                                                                                                            
+Foo Fighters         Best of You                                                                                                                                                                                                                                                                            
+
+SQL> --This one looks correct!
+SQL> SELECT A.Name FROM ARTIST A JOIN RECORDED_BY R ON R.ArtistID = A.ArtistID AND R.SongID = 222;
+
+NAME                                                                                                                                                                                                                                                                                                        
+--------------------                                                                                                                                                                                                                                                                                        
+Prince                                                                                                                                                                                                                                                                                                      
+Foo Fighters                                                                                                                                                                                                                                                                                                
+
+SQL> SELECT A.Name, S.Title FROM ARTIST A JOIN RECORDED_BY R ON R.ArtistID = A.ArtistID JOIN SONG S ON R.SongID = S.SongID AND R.SongID = 222;
+
+NAME                 TITLE                                                                                                                                                                                                                                                                                  
+-------------------- --------------------------------------------------                                                                                                                                                                                                                                     
+Prince               Best of You                                                                                                                                                                                                                                                                            
+Foo Fighters         Best of You                                                                                                                                                                                                                                                                            
+
+SQL> SELECT A.Fname, A.Lname FROM ARTIST A WHERE A.LeadYOD > ANY(SELECT A2.LeadYOD FROM ARTIST A2 WHERE A2.Name = 'Joplin');
+
+no rows selected
+
+SQL>  SELECT A.Fname, A.Lname FROM ARTIST A WHERE A.LeadYOD > ANY(SELECT A2.LeadYOD FROM ARTIST A2 WHERE A2.Lname = 'Joplin');
+
+FNAME                  LNAME                                                                                                                                                                                                                                                                                
+---------------------- --------------------                                                                                                                                                                                                                                                                 
+Mac                    Miller                                                                                                                                                                                                                                                                               
+Tim                    Bergling                                                                                                                                                                                                                                                                             
+Dolores                O'Riordan                                                                                                                                                                                                                                                                            
+Chester                Bennington                                                                                                                                                                                                                                                                           
+Prince Rogers          Nelson                                                                                                                                                                                                                                                                               
+Amy                    Winehouse                                                                                                                                                                                                                                                                            
+Johnny                 Cash                                                                                                                                                                                                                                                                                 
+Erma                   Franklin                                                                                                                                                                                                                                                                             
+Frank                  Sinatra                                                                                                                                                                                                                                                                              
+Christopher George     Latore Wallace                                                                                                                                                                                                                                                                       
+Tupac                  Shakur                                                                                                                                                                                                                                                                               
+
+FNAME                  LNAME                                                                                                                                                                                                                                                                                
+---------------------- --------------------                                                                                                                                                                                                                                                                 
+Bradley                Nowell                                                                                                                                                                                                                                                                               
+Richard Shannon        Hoon                                                                                                                                                                                                                                                                                 
+Kurt                   Cobain                                                                                                                                                                                                                                                                               
+Freddy                 Mercury                                                                                                                                                                                                                                                                              
+Elvis                  Presley                                                                                                                                                                                                                                                                              
+Jim                    Morrison                                                                                                                                                                                                                                                                             
+
+17 rows selected.
+
+SQL> SELECT COUNT(*) FROM ARTIST A;
+
+  COUNT(*)                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        21                                                                                                                                                                                                                                                                                                  
+
+SQL> SELECT AVG (A.LeadAOD) FROM ARTIST A;
+
+AVG(A.LEADAOD)                                                                                                                                                                                                                                                                                              
+--------------                                                                                                                                                                                                                                                                                              
+            39                                                                                                                                                                                                                                                                                              
+
+SQL> SELECT SUM (A.LeadAOD) FROM ARTIST A;
+
+SUM(A.LEADAOD)                                                                                                                                                                                                                                                                                              
+--------------                                                                                                                                                                                                                                                                                              
+           741                                                                                                                                                                                                                                                                                              
+
+SQL> SPOOL OFF
