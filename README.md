@@ -14,33 +14,33 @@ This document contains the cleaned-up version of the queries and their correspon
 
 1: Find the first and last names of all the wizards
 
-    SQL> --ANSWER 1: 
-    SQL> SELECT W.wFname, W.wLname
-     2 FROM WIZARD W;
-    WFNAME                         WLNAME 
-    ------------------------------ ------------------------------ 
-    Harry                          Potter 
-    Ron                            Weasley 
-    Draco                          Malfoy 
-    Hermione                       Granger 
-    Ginny                          Weasley 
-    Luna                           Lovegood 
-    Cedric                         Diggory 
-    Tom                            Riddle 
+        SQL> --ANSWER 1: 
+        SQL> SELECT W.wFname, W.wLname
+         2 FROM WIZARD W;
+        WFNAME                         WLNAME 
+        ------------------------------ ------------------------------ 
+        Harry                          Potter 
+        Ron                            Weasley 
+        Draco                          Malfoy 
+        Hermione                       Granger 
+        Ginny                          Weasley 
+        Luna                           Lovegood 
+        Cedric                         Diggory 
+        Tom                            Riddle 
 
 2: Find the names of Teachers who have taught the class ' Defense Against Dark Arts '
 
-    SQL> --ANSWER 2:
-    SQL> SELECT T.Teacher
-     2 FROM TAKES T
-     3 JOIN CLASS C ON T.cID = C.cID
-     4 AND C.cName = 'Defense Against Dark Arts';
-    
-    TEACHER 
-    ------------------------------ 
-    Quirrell 
-    Moody 
-    Lupin
+        SQL> --ANSWER 2:
+        SQL> SELECT T.Teacher
+         2 FROM TAKES T
+         3 JOIN CLASS C ON T.cID = C.cID
+         4 AND C.cName = 'Defense Against Dark Arts';
+        
+        TEACHER 
+        ------------------------------ 
+        Quirrell 
+        Moody 
+        Lupin
     
 3. Find all the names of the classes Harry Potter took
 
