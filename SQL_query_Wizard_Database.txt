@@ -1,0 +1,616 @@
+SQL> --MAHMOOD SAKIB
+SQL> --DATABASE ASSIGNMENT
+SQL> 
+SQL> 
+SQL> @Wizarding.sql
+SQL> SET DEFINE OFF;
+SQL> SET SCAN OFF;
+SQL> 
+SQL> DROP TABLE WIZARD cascade constraints;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> 
+SQL> DROP TABLE CLASS cascade constraints;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> 
+SQL> DROP TABLE TAKES cascade constraints;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> 
+SQL> DROP TABLE HOUSE cascade constraints;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> 
+SQL> DROP TABLE BELONGS cascade constraints;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> 
+SQL> CREATE TABLE WIZARD(
+  2  	     wID NUMBER,
+  3  	     wFname VARCHAR2(30),
+  4  	     wLname VARCHAR2(30),
+  5  	  PRIMARY KEY (wID));
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('101','Harry','Potter');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('102','Ron','Weasley');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('103','Draco','Malfoy');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('104','Hermione','Granger');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('105','Ginny','Weasley');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('106','Luna','Lovegood');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('107','Cedric','Diggory');
+
+1 row created.
+
+SQL> INSERT INTO WIZARD(wID,wFname,wLname) VALUES ('108','Tom','Riddle');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> CREATE TABLE CLASS(
+  2  	     cID NUMBER,
+  3  	     cName   VARCHAR2(40),
+  4  	     PRIMARY KEY (cID));
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('201','Divination');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('202','Potions');
+
+1 row created.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('203','Muggle Studies');
+
+1 row created.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('204','Transfiguration');
+
+1 row created.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('205','Defense Against Dark Arts');
+
+1 row created.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('206','Care of Magical Creatures');
+
+1 row created.
+
+SQL> INSERT INTO CLASS(cID,cName) VALUES ('207','Herbology');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> CREATE TABLE TAKES(
+  2  	   wID NUMBER,
+  3  	     cID NUMBER,
+  4  	     Teacher VARCHAR2(30),
+  5  	     cYear NUMBER,
+  6  	   PRIMARY KEY (wID,cID,Teacher,cYear),
+  7  	     FOREIGN KEY (wID) REFERENCES WIZARD(wID),
+  8  	     FOREIGN KEY (cID) REFERENCES CLASS (cID));
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','201','Trelawney','1993');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','202','Snape','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','203','Burbage','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','204','McGonagall','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','205','Quirrell','1992');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','206','Hagrid','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('104','207','Sprout','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('105','204','McGonagall','1995');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('103','201','Trelawney','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('102','205','Lupin','1994');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('101','205','Moody','1995');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('101','202','Snape','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('102','202','Snape','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('103','202','Snape','1993');
+
+1 row created.
+
+SQL> INSERT INTO TAKES(wID,cID,Teacher,cYear ) VALUES ('105','202','Snape','1994');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL> CREATE TABLE HOUSE(
+  2  	     hName VARCHAR2(20),
+  3  	     Animal VARCHAR2(20),
+  4  	   Color1 VARCHAR2(20),
+  5  	   Color2 VARCHAR2(20),
+  6  	     PRIMARY KEY (hName));
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO HOUSE(hName,Animal,Color1,Color2) VALUES ('Gryffindor','Lion','Gold','Red');
+
+1 row created.
+
+SQL> INSERT INTO HOUSE(hName,Animal,Color1,Color2) VALUES ('Slytherin','Serpent','Silver','Green');
+
+1 row created.
+
+SQL> INSERT INTO HOUSE(hName,Animal,Color1,Color2) VALUES ('Ravenclaw','Eagle','Bronze','Gold');
+
+1 row created.
+
+SQL> INSERT INTO HOUSE(hName,Animal,Color1,Color2) VALUES ('Hufflepuff','Badger','Black','Yellow');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> CREATE TABLE BELONGS(
+  2  	     wID NUMBER,
+  3  	     hName VARCHAR2(20),
+  4  	     Ranking NUMBER,
+  5  	     Points VARCHAR2(20),
+  6  	     hYear NUMBER,
+  7  	     PRIMARY KEY (wID, hName, hYear),
+  8  	     FOREIGN KEY (wID) REFERENCES WIZARD (wID),
+  9  	     FOREIGN KEY (hName)REFERENCES HOUSE (hName));
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('101','Gryffindor','1','482','1992');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('102','Gryffindor','1','482','1992');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('103','Slytherin','2','472','1992');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('104','Gryffindor','1','472','1992');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('105','Gryffindor','1','488','1995');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('106','Ravenclaw','3','426','1992');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('107','Hufflepuff','2','376','1990');
+
+1 row created.
+
+SQL> INSERT INTO BELONGS(wID,hName,Ranking,Points,hYear ) VALUES ('108','Slytherin','1','480','1943');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT * FROM WIZARD;
+
+       WID WFNAME                         WLNAME                                                                                                                                                                                                                                                            
+---------- ------------------------------ ------------------------------                                                                                                                                                                                                                                    
+       101 Harry                          Potter                                                                                                                                                                                                                                                            
+       102 Ron                            Weasley                                                                                                                                                                                                                                                           
+       103 Draco                          Malfoy                                                                                                                                                                                                                                                            
+       104 Hermione                       Granger                                                                                                                                                                                                                                                           
+       105 Ginny                          Weasley                                                                                                                                                                                                                                                           
+       106 Luna                           Lovegood                                                                                                                                                                                                                                                          
+       107 Cedric                         Diggory                                                                                                                                                                                                                                                           
+       108 Tom                            Riddle                                                                                                                                                                                                                                                            
+
+8 rows selected.
+
+SQL> SELECT * FROM CLASS;
+
+       CID CNAME                                                                                                                                                                                                                                                                                            
+---------- ----------------------------------------                                                                                                                                                                                                                                                         
+       201 Divination                                                                                                                                                                                                                                                                                       
+       202 Potions                                                                                                                                                                                                                                                                                          
+       203 Muggle Studies                                                                                                                                                                                                                                                                                   
+       204 Transfiguration                                                                                                                                                                                                                                                                                  
+       205 Defense Against Dark Arts                                                                                                                                                                                                                                                                        
+       206 Care of Magical Creatures                                                                                                                                                                                                                                                                        
+       207 Herbology                                                                                                                                                                                                                                                                                        
+
+7 rows selected.
+
+SQL> SELECT * FROM TAKES;
+
+       WID        CID TEACHER                             CYEAR                                                                                                                                                                                                                                             
+---------- ---------- ------------------------------ ----------                                                                                                                                                                                                                                             
+       101        202 Snape                                1993                                                                                                                                                                                                                                             
+       101        205 Moody                                1995                                                                                                                                                                                                                                             
+       102        202 Snape                                1993                                                                                                                                                                                                                                             
+       102        205 Lupin                                1994                                                                                                                                                                                                                                             
+       103        201 Trelawney                            1993                                                                                                                                                                                                                                             
+       103        202 Snape                                1993                                                                                                                                                                                                                                             
+       104        201 Trelawney                            1993                                                                                                                                                                                                                                             
+       104        202 Snape                                1993                                                                                                                                                                                                                                             
+       104        203 Burbage                              1993                                                                                                                                                                                                                                             
+       104        204 McGonagall                           1993                                                                                                                                                                                                                                             
+       104        205 Quirrell                             1992                                                                                                                                                                                                                                             
+
+       WID        CID TEACHER                             CYEAR                                                                                                                                                                                                                                             
+---------- ---------- ------------------------------ ----------                                                                                                                                                                                                                                             
+       104        206 Hagrid                               1993                                                                                                                                                                                                                                             
+       104        207 Sprout                               1993                                                                                                                                                                                                                                             
+       105        202 Snape                                1994                                                                                                                                                                                                                                             
+       105        204 McGonagall                           1995                                                                                                                                                                                                                                             
+
+15 rows selected.
+
+SQL> SELECT * FROM BELONGS;
+
+       WID HNAME                   RANKING POINTS                    HYEAR                                                                                                                                                                                                                                  
+---------- -------------------- ---------- -------------------- ----------                                                                                                                                                                                                                                  
+       101 Gryffindor                    1 482                        1992                                                                                                                                                                                                                                  
+       102 Gryffindor                    1 482                        1992                                                                                                                                                                                                                                  
+       103 Slytherin                     2 472                        1992                                                                                                                                                                                                                                  
+       104 Gryffindor                    1 472                        1992                                                                                                                                                                                                                                  
+       105 Gryffindor                    1 488                        1995                                                                                                                                                                                                                                  
+       106 Ravenclaw                     3 426                        1992                                                                                                                                                                                                                                  
+       107 Hufflepuff                    2 376                        1990                                                                                                                                                                                                                                  
+       108 Slytherin                     1 480                        1943                                                                                                                                                                                                                                  
+
+8 rows selected.
+
+SQL> SELECT * FROM HOUSE;
+
+HNAME                ANIMAL               COLOR1               COLOR2                                                                                                                                                                                                                                       
+-------------------- -------------------- -------------------- --------------------                                                                                                                                                                                                                         
+Gryffindor           Lion                 Gold                 Red                                                                                                                                                                                                                                          
+Slytherin            Serpent              Silver               Green                                                                                                                                                                                                                                        
+Ravenclaw            Eagle                Bronze               Gold                                                                                                                                                                                                                                         
+Hufflepuff           Badger               Black                Yellow                                                                                                                                                                                                                                       
+
+SQL> 
+SQL> 
+SQL> --DATABASE CHECKED AND WORKING PROPERLY
+SQL> 
+SQL> --=======================DATABASE QUERY BELONGS HERE===========================
+SQL> 
+SQL> 
+SQL> --ANSWER 1:
+SQL> SELECT W.wFname, W.wLname
+  2  FROM WIZARD W;
+
+WFNAME                         WLNAME                                                                                                                                                                                                                                                                       
+------------------------------ ------------------------------                                                                                                                                                                                                                                               
+Harry                          Potter                                                                                                                                                                                                                                                                       
+Ron                            Weasley                                                                                                                                                                                                                                                                      
+Draco                          Malfoy                                                                                                                                                                                                                                                                       
+Hermione                       Granger                                                                                                                                                                                                                                                                      
+Ginny                          Weasley                                                                                                                                                                                                                                                                      
+Luna                           Lovegood                                                                                                                                                                                                                                                                     
+Cedric                         Diggory                                                                                                                                                                                                                                                                      
+Tom                            Riddle                                                                                                                                                                                                                                                                       
+
+8 rows selected.
+
+SQL> 
+SQL> --ANSWER 2:
+SQL> 
+SQL> SELECT T.Teacher
+  2  FROM TAKES T
+  3  JOIN CLASS C ON T.cID = C.cID
+  4  AND C.cName = 'Defense Against Dark Arts';
+
+TEACHER                                                                                                                                                                                                                                                                                                     
+------------------------------                                                                                                                                                                                                                                                                              
+Quirrell                                                                                                                                                                                                                                                                                                    
+Moody                                                                                                                                                                                                                                                                                                       
+Lupin                                                                                                                                                                                                                                                                                                       
+
+SQL> 
+SQL> --ANSWER 3:
+SQL> 
+SQL> SELECT C.cName
+  2  FROM CLASS C
+  3  JOIN TAKES T ON T.cID = C.cID
+  4  JOIN WIZARD W ON W.wID = T.wID
+  5  WHERE W.wFname = 'Harry' AND W.wLname = 'Potter';
+
+CNAME                                                                                                                                                                                                                                                                                                       
+----------------------------------------                                                                                                                                                                                                                                                                    
+Potions                                                                                                                                                                                                                                                                                                     
+Defense Against Dark Arts                                                                                                                                                                                                                                                                                   
+
+SQL> 
+SQL> --ANSWER 4:
+SQL> 
+SQL> SELECT DISTINCT W.wFname
+  2  FROM WIZARD W
+  3  JOIN TAKES T ON T.wID = W.wID;
+
+WFNAME                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Ginny                                                                                                                                                                                                                                                                                                       
+Draco                                                                                                                                                                                                                                                                                                       
+Harry                                                                                                                                                                                                                                                                                                       
+Ron                                                                                                                                                                                                                                                                                                         
+Hermione                                                                                                                                                                                                                                                                                                    
+
+SQL> 
+SQL> --ANSWER 5:
+SQL> 
+SQL> SELECT W.wLname
+  2  FROM WIZARD W
+  3  JOIN TAKES T ON T.wID = W.wID
+  4  MINUS
+  5  SELECT W.wLname
+  6  FROM WIZARD W
+  7  JOIN TAKES T ON T.wID = W.wID
+  8  JOIN CLASS C on T.cID = C.cID AND C.cName ='Potions';
+
+no rows selected
+
+SQL> 
+SQL> --ANSWER 6:
+SQL> 
+SQL> SELECT wFname,wLname
+  2  FROM WIZARD
+  3  WHERE wID IN ((SELECT wID
+  4  FROM TAKES)
+  5  MINUS
+  6  (SELECT wID
+  7  FROM TAKES
+  8  JOIN CLASS ON TAKES.cID = CLASS.cID
+  9  WHERE cName = 'Muggle Studies'));
+
+WFNAME                         WLNAME                                                                                                                                                                                                                                                                       
+------------------------------ ------------------------------                                                                                                                                                                                                                                               
+Draco                          Malfoy                                                                                                                                                                                                                                                                       
+Ginny                          Weasley                                                                                                                                                                                                                                                                      
+Harry                          Potter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+Ron                            Weasley                                                                                                                                                                                                                                                                      
+
+SQL> 
+SQL> --ANSWER 7
+SQL> 
+SQL> SELECT W.wFname
+  2  FROM WIZARD W
+  3  JOIN BELONGS B ON B.wID = W.wID AND B.hNAME <> 'Gryffindor';
+
+WFNAME                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Draco                                                                                                                                                                                                                                                                                                       
+Luna                                                                                                                                                                                                                                                                                                        
+Cedric                                                                                                                                                                                                                                                                                                      
+Tom                                                                                                                                                                                                                                                                                                         
+
+SQL> 
+SQL> --ANSWER 8
+SQL> 
+SQL> SELECT W.wFname
+  2  FROM WIZARD W
+  3  JOIN TAKES T ON T.wID = W.wID
+  4  JOIN CLASS C on T.cID = C.cID AND C.cName ='Potions'
+  5  INTERSECT
+  6  SELECT W.wFname
+  7  FROM WIZARD W
+  8  JOIN TAKES T ON T.wID = W.wID
+  9  JOIN CLASS C on T.cID = C.cID AND C.cName ='Transfiguration';
+
+WFNAME                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Ginny                                                                                                                                                                                                                                                                                                       
+Hermione                                                                                                                                                                                                                                                                                                    
+
+SQL> 
+SQL> --ANSWER 9
+SQL> 
+SQL> SELECT W.wFname, W.wLname
+  2  FROM WIZARD W
+  3  JOIN TAKES T ON T.wID = W.wID
+  4  JOIN CLASS C ON T.cID = C.cID
+  5  GROUP BY W.wID, W.wFname, W.wLname
+  6  HAVING COUNT(DISTINCT C.cID) = (SELECT COUNT(DISTINCT cID) FROM CLASS);
+
+WFNAME                         WLNAME                                                                                                                                                                                                                                                                       
+------------------------------ ------------------------------                                                                                                                                                                                                                                               
+Hermione                       Granger                                                                                                                                                                                                                                                                      
+
+SQL> 
+SQL> --ANSWER 10:
+SQL> 
+SQL> SELECT AVG(B.Points), MAX(B.Points)
+  2  FROM BELONGS B;
+
+AVG(B.POINTS) MAX(B.POINTS)                                                                                                                                                                                                                                                                                 
+------------- --------------------                                                                                                                                                                                                                                                                          
+       459.75 488                                                                                                                                                                                                                                                                                           
+
+SQL> 
+SQL> --ANSWER 11:
+SQL> 
+SQL> SELECT W.wFname, W.wLname, B.hYear
+  2  FROM BELONGS B
+  3  JOIN WIZARD W ON B.wID = W.wID
+  4  WHERE B.hYear =(SELECT MIN(B2.hYear) FROM BELONGS B2);
+
+WFNAME                         WLNAME                              HYEAR                                                                                                                                                                                                                                    
+------------------------------ ------------------------------ ----------                                                                                                                                                                                                                                    
+Tom                            Riddle                               1943                                                                                                                                                                                                                                    
+
+SQL> 
+SQL> --ANSWER 12:
+SQL> 
+SQL> SELECT W.wFname, C.cName, T.Teacher
+  2  FROM WIZARD W
+  3  JOIN TAKES T ON T.wID = W.wID
+  4  JOIN CLASS C ON T.cID = C.cID
+  5  WHERE T.cYear = 1993;
+
+WFNAME                         CNAME                                    TEACHER                                                                                                                                                                                                                             
+------------------------------ ---------------------------------------- ------------------------------                                                                                                                                                                                                      
+Draco                          Divination                               Trelawney                                                                                                                                                                                                                           
+Hermione                       Divination                               Trelawney                                                                                                                                                                                                                           
+Harry                          Potions                                  Snape                                                                                                                                                                                                                               
+Ron                            Potions                                  Snape                                                                                                                                                                                                                               
+Draco                          Potions                                  Snape                                                                                                                                                                                                                               
+Hermione                       Potions                                  Snape                                                                                                                                                                                                                               
+Hermione                       Muggle Studies                           Burbage                                                                                                                                                                                                                             
+Hermione                       Transfiguration                          McGonagall                                                                                                                                                                                                                          
+Hermione                       Care of Magical Creatures                Hagrid                                                                                                                                                                                                                              
+Hermione                       Herbology                                Sprout                                                                                                                                                                                                                              
+
+10 rows selected.
+
+SQL> 
+SQL> --ANSWER 13:
+SQL> 
+SQL> SELECT C.cName, T.Teacher
+  2  FROM CLASS C
+  3  JOIN TAKES T ON C.cID = T.cID
+  4  WHERE C.cNAME LIKE 'D%';
+
+CNAME                                    TEACHER                                                                                                                                                                                                                                                            
+---------------------------------------- ------------------------------                                                                                                                                                                                                                                     
+Divination                               Trelawney                                                                                                                                                                                                                                                          
+Divination                               Trelawney                                                                                                                                                                                                                                                          
+Defense Against Dark Arts                Quirrell                                                                                                                                                                                                                                                           
+Defense Against Dark Arts                Moody                                                                                                                                                                                                                                                              
+Defense Against Dark Arts                Lupin                                                                                                                                                                                                                                                              
+
+SQL> 
+SQL> --ANSWER 14:
+SQL> 
+SQL> --MY OWN QUERY REQUEST==>
+SQL> --FIND THE LOWEST POINTS FROM BELONGS TABLE
+SQL> 
+SQL> 
+SQL> --ANSWER 15:
+SQL> 
+SQL> SELECT MIN(B.Points)
+  2  FROM BELONGS B;
+
+MIN(B.POINTS)                                                                                                                                                                                                                                                                                               
+--------------------                                                                                                                                                                                                                                                                                        
+376                                                                                                                                                                                                                                                                                                         
+
+SQL> 
+SQL> --==================================SQL QUERY ENDS HERE===========================
+SQL> SPOOL OFF
