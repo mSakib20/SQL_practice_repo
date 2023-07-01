@@ -12,9 +12,20 @@ This document contains the cleaned-up version of the queries and their correspon
 
 # Queries
 
-    Find the first and last names of all the wizards
-
-    Find the first and last names of all the wizards
+    1: Find the first and last names of all the wizards
+    SQL> --ANSWER 1: 
+    SQL> SELECT W.wFname, W.wLname
+     2 FROM WIZARD W;
+    WFNAME                         WLNAME 
+    ------------------------------ ------------------------------ 
+    Harry                          Potter 
+    Ron                            Weasley 
+    Draco                          Malfoy 
+    Hermione                       Granger 
+    Ginny                          Weasley 
+    Luna                           Lovegood 
+    Cedric                         Diggory 
+    Tom                            Riddle 
 
     
 ![image](https://github.com/mSakib20/SQL_practice_repo/assets/97981916/a64ba6ce-792e-4178-9f25-0a4ecbf20763)
