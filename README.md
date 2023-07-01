@@ -1,5 +1,5 @@
 # SQL_practice_repo
-# Module 5 – SQL Query Assignment
+# SQL Query Assignment - Wizard DB 
 
 This repository contains the SQL queries and results for Module 5 assignment on formulating query expressions using the SQL query language.
 Documents to Submit
